@@ -12,6 +12,21 @@ public class FunRestController {
         return "Hello World!";
     }
 
+    //Inject property for coach name and team name
+    @Value("${coach.name}")
+    private String coachName;
+
+    @Value("${team.name}")
+    private String teamName;
+
+    //expose new endpoint for "teaminfo"
+    @GetMapping("/teaminfo")
+    private String teamInfo() {
+        return"Team name: " +teamName + " " +"coach name: "+ coachName;
+    }
+
+
+
     @GetMapping("/workout")
     public String getDailyWorkout()
     {
